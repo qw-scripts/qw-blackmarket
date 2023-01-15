@@ -5,7 +5,7 @@
 <https://dsc.gg/qw-scripts>
 
 # qw-darkmarket
-QBCore Customizable Darkmarket System
+QBCore Customizable blackmarket System
 
 # Preview
 https://vimeo.com/789297554
