@@ -2,8 +2,9 @@ fx_version 'cerulean'
 
 games {"gta5", "rdr3"}
 
-author "Project Error"
-version '1.0.0'
+author "qw-scripts"
+description "black-market script for FiveM"
+version '0.0.0'
 
 lua54 'yes'
 

@@ -1,4 +1,4 @@
-RegisterCommand('svelte:show', function()
+RegisterCommand('bm-test', function()
     SendNUIMessage({
         action = 'setVisible',
         data = true
