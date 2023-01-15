@@ -7,5 +7,8 @@
 # qw-blackmarket
 QBCore Customizable blackmarket System
 
+# Installation
+**PLEASE DOWNLOAD FROM THE LATEST BUILD [HERE](https://github.com/qw-scripts/qw-blackmarket/releases/tag/v0.1.0)**
+
 # Preview
-https://vimeo.com/789297554
+https://vimeo.com/789457492
