@@ -1,33 +1,20 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import { fetchNui } from "../../utils/fetchNui";
   import ShopCard from "./ShopCard.svelte";
 
-  let sampleData = [
-    {
-      name: "Item 1",
-      desc: "This is a sample item",
-      price: 1.0,
-    },
-    {
-      name: "Item 2",
-      desc: "This is a sample item",
-      price: 1.0,
-    },
-    {
-      name: "Item 3",
-      desc: "This is a sample item",
-      price: 5.0,
-    },
-    {
-      name: "Item 4",
-      desc: "This is a sample item",
-      price: 100.0,
-    },
-    {
-      name: "Item 5",
-      desc: "This is a sample item",
-      price: 1.0,
-    },
-  ];
+  interface ReturnData {
+    name: string;
+    description: string;
+    price: number;
+  }
+
+  let itemList: ReturnData[] = [];
+
+  onMount(async () => {
+    const response = await fetchNui("getItemList");
+    itemList = response;
+  });
 
   let search = "";
 </script>
@@ -39,13 +26,23 @@
     placeholder="search for an item"
     class="w-full p-2 rounded-md bg-stone-700 text-stone-100"
   />
-  <div class="noscroll-container shop-grid gap-2 overflow-y-scroll h-[43.5rem]">
-    {#each sampleData.filter((item) => item.name
+  {#if itemList.length === 0}
+    <div class="flex justify-center items-center">
+      <div
+        class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6 mb-4"
+      />
+    </div>
+  {:else}
+    <div
+      class="noscroll-container shop-grid gap-2 overflow-y-scroll h-[43.5rem]"
+    >
+      {#each itemList.filter((item) => item.name
         .toLowerCase()
         .includes(search.toLowerCase())) as item}
-      <ShopCard {item} />
-    {/each}
-  </div>
+        <ShopCard {item} />
+      {/each}
+    </div>
+  {/if}
 </div>
 
 <style>

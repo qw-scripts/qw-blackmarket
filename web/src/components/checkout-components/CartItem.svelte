@@ -15,7 +15,7 @@
 <div class="p-2 bg-stone-700 rounded-md flex items-start justify-between gap-2 w-full">
   <div class="flex flex-col gap-2">
     <h1 class="font-semibold leading-tight">{cartItem.name}</h1>
-    <p class="text-sm">{cartItem.desc}</p>
+    <p class="text-sm">{cartItem.description}</p>
     <p class="text-sm">{formatAsUSD(cartItem.price)}</p>
   </div>
   <button class="flex gap-3 items-center p-2 hover:bg-stone-800 rounded-md" on:click={() => removeItem(cartItem)}>

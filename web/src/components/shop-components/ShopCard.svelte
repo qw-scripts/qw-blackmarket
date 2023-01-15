@@ -25,7 +25,7 @@
 >
   <div class="flex flex-col gap-2">
     <h1 class="font-semibold leading-tight">{item.name}</h1>
-    <p class="text-sm">{item.desc}</p>
+    <p class="text-sm">{item.description}</p>
     <p class="text-sm">{formatAsUSD(item.price)}</p>
   </div>
   <button

@@ -1,3 +1,8 @@
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
 export function formatAsUSD(amount: number): string {
-    return "$" + amount.toFixed(2);
-  }
+  return formatter.format(amount);
+}
