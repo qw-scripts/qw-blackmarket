@@ -4,7 +4,7 @@
 
 <https://dsc.gg/qw-scripts>
 
-# qw-darkmarket
+# qw-blackmarket
 QBCore Customizable blackmarket System
 
 # Preview
