@@ -1,10 +1,12 @@
 Config = {}
 
-Config.Debug = false
+Config.ItemName = 'tablet' -- usable item name
 
-Config.EmailSendTime = math.random(10000, 30000)
+Config.Debug = false -- debug mode
 
-Config.Items = {
+Config.EmailSendTime = math.random(10000, 30000) -- time in ms to send email
+
+Config.Items = { -- Items being sold on the Blackmarket
     ['weapon_pistol'] = {
         name = "Pistol",
         description = "A small pistol",
@@ -32,7 +34,7 @@ Config.Items = {
     }
 }
 
-Config.PickupLocations = {
+Config.PickupLocations = { -- Pickup locations for the items when an order is placed
     [1] = {
         coords = vector3(12.33, -1299.86, 29.24),
         name = 'Pickup Location 1',

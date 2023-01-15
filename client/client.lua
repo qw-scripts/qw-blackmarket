@@ -2,9 +2,23 @@ local QBCore = exports['qb-core']:GetCoreObject()
 pickupZoneName = nil
 pickupBlip = nil
 
-RegisterCommand('bm-test', function()
+
+if Config.Debug then
+    RegisterCommand('bm-test', function()
+        SetDisplay(true)
+    end)
+end
+
+RegisterNetEvent('qw-blackmarket:client:openMarket', function()
+    TriggerEvent('animations:client:EmoteCommandStart', {"tablet2"})
     SetDisplay(true)
 end)
+
+function openMarket()
+    TriggerEvent('qw-blackmarket:client:openMarket')
+end
+
+exports('openMarket', openMarket)
 
 RegisterNUICallback('getItemList', function(_, cb)
     local itemList = {}
@@ -26,6 +40,7 @@ RegisterNUICallback('checkout', function(data, cb)
     --     print(k, v)
     -- end
     SetDisplay(false)
+    TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 
     QBCore.Functions.TriggerCallback('qw-blackmarket:server:checkMoneyNeeded', function(hasEnough)
         if hasEnough then

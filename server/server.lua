@@ -1,5 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+QBCore.Functions.CreateUseableItem(Config.ItemName, function(source, item)
+    TriggerClientEvent('qw-blackmarket:client:openMarket', source)
+end)
+
 QBCore.Functions.CreateCallback('qw-blackmarket:server:checkMoneyNeeded', function(source, cb, price, currency) 
 
     local src = source
