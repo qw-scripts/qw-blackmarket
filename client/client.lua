@@ -57,7 +57,7 @@ function createPickupZone(items)
     local pickupZoneInfo = Config.PickupLocations[math.random(1,#Config.PickupLocations)]
     pickupZoneName = pickupZoneInfo.name
 
-    QBCore.Functions.Notify('Purchase Successful, you will recieve an email shortly with your pickup location!', 'success', 7500)
+    QBCore.Functions.Notify('Purchase Successful, you will receive an email shortly with your pickup location!', 'success', 7500)
 
     StartPickup(pickupZoneInfo.coords)
 
