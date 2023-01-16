@@ -1,12 +1,24 @@
 <script lang="ts">
+  import { fetchNui } from "../../utils/fetchNui";
+  import { onMount } from "svelte";
   import { cartItems } from "../../store/stores";
   import CartActions from "./CartActions.svelte";
   import CartItem from "./CartItem.svelte";
 
   let cart: any[];
+  let shouldAllowCrypto = false;
+  let cryptoInfo = {};
 
   cartItems.subscribe((cartStuff) => {
     cart = cartStuff;
+  });
+
+  onMount(async () => {
+    const cryptoEnabled: boolean = await fetchNui("isCryptoEnabled");
+    const clientCryptoInfo: any = await fetchNui("getCryptoInfo");
+
+    shouldAllowCrypto = cryptoEnabled;
+    cryptoInfo = clientCryptoInfo;
   });
 </script>
 
@@ -21,7 +33,10 @@
     {/each}
   </div>
   <div class="w-1/4 p-2">
-    <CartActions />
+    <CartActions
+      shouldUseCrypto={shouldAllowCrypto}
+      clientCryptoInfo={cryptoInfo}
+    />
   </div>
 </div>
 
