@@ -1,10 +1,16 @@
 Config = {}
 
-Config.ItemName = 'tablet' -- usable item name
+Config.ItemName = 'laptop' -- usable item name
 
 Config.Debug = false -- debug mode
 
 Config.EmailSendTime = math.random(10000, 30000) -- time in ms to send email
+
+Config.Crypto = {
+    Enabled = true, -- enable crypto currency
+    CryptoType = 'renewed', -- qb or renewed
+    RenewedCryptoType = 'shung' -- shung, gne, xcoin, lme (only used if CryptoType is renewed)
+}
 
 Config.Items = { -- Items being sold on the Blackmarket
     ['weapon_pistol'] = {

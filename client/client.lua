@@ -10,7 +10,6 @@ if Config.Debug then
 end
 
 RegisterNetEvent('qw-blackmarket:client:openMarket', function()
-    TriggerEvent('animations:client:EmoteCommandStart', {"tablet2"})
     SetDisplay(true)
 end)
 
@@ -35,12 +34,34 @@ RegisterNUICallback('getItemList', function(_, cb)
 
 end)
 
+RegisterNUICallback('isCryptoEnabled', function(_, cb)
+    cb(Config.Crypto.Enabled)
+end)
+
+RegisterNUICallback('getCryptoInfo', function(_, cb)
+    QBCore.Functions.TriggerCallback('qw-blackmarket:server:checkCryptoWorth', function(result)
+        local cryptoInfo = {}
+
+        if Config.Crypto.CryptoType == 'qb' then
+            cryptoInfo = {
+                name = 'qbit',
+                worth = result
+            }
+        else 
+            cryptoInfo = {
+                name = Config.Crypto.RenewedCryptoType,
+                worth = result
+            }
+        end
+        cb(cryptoInfo)
+    end, Config.Crypto.CryptoType)
+end)
+
 RegisterNUICallback('checkout', function(data, cb) 
     -- for k, v in pairs(data.cartItems) do
     --     print(k, v)
     -- end
     SetDisplay(false)
-    TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 
     QBCore.Functions.TriggerCallback('qw-blackmarket:server:checkMoneyNeeded', function(hasEnough)
         if hasEnough then
